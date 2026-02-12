@@ -62,14 +62,3 @@ SQL, NoSQL, Databricks, Power BI, Tableau, Excel
 AWS (S3, SageMaker), Azure, GCP, Jenkins, Docker, Git  
 
 ---
-
-## Deployment
-
-This website is deployed automatically using GitHub Pages from the `main` branch.
-
-To update the site:
-
-```bash
-git add .
-git commit -m "Update portfolio"
-git push
