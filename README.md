@@ -2,8 +2,8 @@
 
 This repository contains the source code for my personal portfolio website, hosted via GitHub Pages.
 
-🔗 Live site: https://ssuurryyaaa.github.io  
-🔗 GitHub: https://github.com/ssuurryyaaa  
+🔗 Live site: https://suryanaraynan.github.io  
+🔗 GitHub: https://github.com/suryanaraynan  
 🔗 LinkedIn: https://www.linkedin.com/in/surya-naraynan/
 
 ---
