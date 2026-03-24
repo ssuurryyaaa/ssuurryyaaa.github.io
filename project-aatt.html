@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age Assurance Technology Trial — Surya Ramessh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #00e5a0; --accent2: #0af; --bg: #0d0f14; --bg2: #13161e;
+      --bg3: #1a1e2a; --border: #ffffff14; --text: #e8eaf0; --muted: #7a7f94;
+      --mono: 'Space Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: var(--mono); font-size: 1rem; color: var(--accent); text-decoration: none; }
+    .back { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .back:hover { color: var(--text); }
+    .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2.5rem 2rem; }
+    .section-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+    .meta-item { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+    .meta-item span { color: var(--accent); display: block; margin-bottom: 0.2rem; }
+    .tag { font-family: var(--mono); font-size: 0.7rem; color: var(--accent2); background: rgba(0,170,255,0.07); padding: 0.22rem 0.55rem; border-radius: 3px; display: inline-block; margin: 0.2rem 0.2rem 0.2rem 0; }
+    .tag-gov { font-family: var(--mono); font-size: 0.7rem; color: #ffcc00; background: rgba(255,204,0,0.07); border: 1px solid rgba(255,204,0,0.2); padding: 0.22rem 0.55rem; border-radius: 3px; display: inline-block; margin: 0.2rem 0.2rem 0.2rem 0; }
+    .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
+    section { max-width: 860px; margin: 0 auto; padding: 3rem 2.5rem; }
+    h2 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
+    p { font-size: 0.97rem; color: var(--muted); line-height: 1.9; font-weight: 300; margin-bottom: 1rem; }
+    .hero-img { width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block; margin-bottom: 3rem; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 2rem 0; }
+    .stat-box { background: var(--bg2); padding: 1.5rem; }
+    .stat-num { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+    .stat-lbl { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+    .highlight-box { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .highlight-box p { margin: 0; font-size: 0.92rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .detail-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .detail-card h3 { font-size: 0.8rem; font-family: var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+    .detail-card ul { list-style: none; }
+    .detail-card li { font-size: 0.86rem; color: var(--muted); padding: 0.5rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.6rem; font-weight: 300; }
+    .detail-card li:last-child { border-bottom: none; }
+    .detail-card li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .pub-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-family: var(--mono); font-size: 0.8rem; text-decoration: none; border: 1px solid var(--accent); padding: 0.5rem 1rem; border-radius: 4px; margin-top: 1rem; transition: background 0.2s, color 0.2s; }
+    .pub-link:hover { background: var(--accent); color: #000; }
+    .cta-bar { background: var(--bg2); border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .cta-text { font-size: 0.9rem; color: var(--muted); }
+    .cta-text strong { color: var(--text); font-weight: 500; }
+    .btn-accent { background: var(--accent); color: #000; padding: 0.65rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600; font-family: var(--mono); transition: opacity 0.2s; }
+    .btn-accent:hover { opacity: 0.82; }
+    footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 650px) { .two-col { grid-template-columns: 1fr; } nav { padding: 1rem 1.25rem; } .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; } .divider { margin: 0 1.25rem; } .cta-bar { padding: 1.5rem 1.25rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">surya.ramessh</a>
+  <a href="index.html#projects" class="back">← back to projects</a>
+</nav>
+
+<div class="hero">
+  <div class="section-label">Government · Regulatory Evaluation · AI Policy</div>
+  <h1>Australian Age Assurance Technology Trial</h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span>client</span>Commonwealth of Australia</div>
+    <div class="meta-item"><span>role</span>Applied Data Scientist</div>
+    <div class="meta-item"><span>duration</span>Jan 2025 – Sep 2025</div>
+    <div class="meta-item"><span>visibility</span>Public report</div>
+  </div>
+  <div>
+    <span class="tag-gov">Government</span>
+    <span class="tag-gov">Public Report</span>
+    <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">OpenCV</span>
+    <span class="tag">AWS</span><span class="tag">Biometrics</span><span class="tag">Evaluation Design</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section>
+  <img src="assets/aatt-report.jpeg" alt="Australian Age Assurance Technology Trial — D-2.9 Evaluation Proposal" class="hero-img">
+
+  <h2>The problem</h2>
+  <p>Australia's Online Safety Amendment (Social Media Minimum Age) Act 2024 requires platforms to prevent children under 16 from accessing social media. To enforce this, the government needed to identify which age assurance technologies actually work — and which don't — before recommending them to industry.</p>
+  <p>With 52 vendors in the market and no established evaluation standard, the government required a statistically rigorous, defensible framework for comparing biometric age-estimation systems across diverse demographic groups. The stakes were high: a flawed evaluation could either expose children to harm or create disproportionate barriers for legitimate users.</p>
+
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num">52</div><div class="stat-lbl">biometric vendors evaluated</div></div>
+    <div class="stat-box"><div class="stat-num">2,500+</div><div class="stat-lbl">participant sampling framework</div></div>
+    <div class="stat-box"><div class="stat-num">12</div><div class="stat-lbl">demographic strata</div></div>
+    <div class="stat-box"><div class="stat-num">~20%</div><div class="stat-lbl">accuracy improvement vs baseline</div></div>
+  </div>
+
+  <h2>What I did</h2>
+  <p>I was part of the core analytical team that spearheaded the evaluation framework for this nationally significant trial. My contributions spanned statistical design, pipeline engineering, and vendor benchmarking across a 2,500+ participant study.</p>
+
+  <div class="highlight-box">
+    <p>The evaluation proposal I co-authored — the D-2.9 Evaluation Proposal — is an 88-page public document published by the Commonwealth of Australia. It defines the methodology, sampling strategy, and scoring criteria used to assess age assurance vendors for compliance with Australia's Social Media Minimum Age legislation.</p>
+  </div>
+
+  <p>I designed and engineered a Python and SQL computer vision pipeline integrating cloud image sources across AWS, enabling automated age estimation at scale. The pipeline improved age-estimation performance by approximately 20% relative to baseline vendor models — a meaningful gain when applied across millions of users.</p>
+
+  <a href="https://ageassurance.com.au/report/" target="_blank" class="pub-link">↗ view public report</a>
+
+  <div class="two-col" style="margin-top:2.5rem">
+    <div class="detail-card">
+      <h3>Technical approach</h3>
+      <ul>
+        <li>Stratified 2,500+ participant sampling across 12 demographic groups</li>
+        <li>Python + SQL computer vision pipeline on AWS</li>
+        <li>Benchmarking of 52 biometric age-assurance vendors</li>
+        <li>Statistical scoring framework across 8 evaluation dimensions</li>
+        <li>GDPR-equivalent data handling for biometric records</li>
+      </ul>
+    </div>
+    <div class="detail-card">
+      <h3>Policy impact</h3>
+      <ul>
+        <li>Directly informed legislative recommendations under Australian federal law</li>
+        <li>Established reusable evaluation methodology for future vendor assessments</li>
+        <li>~20% improvement in age estimation accuracy vs vendor baselines</li>
+        <li>Public 88-page evaluation proposal — citable, scrutiny-tested</li>
+        <li>Demonstrated ethical AI evaluation at national scale</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Why this matters for your organisation</h2>
+  <p>If your organisation needs to evaluate AI vendors, design sampling frameworks, or produce methodology documents that can withstand regulatory or legal scrutiny, this project demonstrates exactly that capability. The combination of statistical rigour, computer vision pipeline engineering, and policy documentation is rare in a single analyst.</p>
+  <p>This work is particularly relevant to public sector bodies, digital identity providers, age verification platforms, and any organisation navigating AI procurement in regulated industries.</p>
+</section>
+
+<div class="cta-bar">
+  <div class="cta-text"><strong>Need evaluation or regulatory analytics work?</strong> I'm available for policy-adjacent data engagements.</div>
+  <a href="index.html#contact" class="btn-accent">→ get in touch</a>
+</div>
+
+<footer>
+  <span>Surya Naraynan Ramessh</span>
+  <a href="index.html#projects" style="color:var(--muted);text-decoration:none;">← all projects</a>
+</footer>
+
+</body>
+</html>

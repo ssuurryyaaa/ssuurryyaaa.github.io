@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wellbeing Benchmarking — Surya Ramessh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #00e5a0; --accent2: #0af; --bg: #0d0f14; --bg2: #13161e;
+      --bg3: #1a1e2a; --border: #ffffff14; --text: #e8eaf0; --muted: #7a7f94;
+      --mono: 'Space Mono', monospace; --sans: 'Sora', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: var(--mono); font-size: 1rem; color: var(--accent); text-decoration: none; }
+    .back { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .back:hover { color: var(--text); }
+    .hero { max-width: 860px; margin: 0 auto; padding: 4rem 2.5rem 2rem; }
+    .section-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; }
+    .meta-item { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+    .meta-item span { color: var(--accent); display: block; margin-bottom: 0.2rem; }
+    .tag { font-family: var(--mono); font-size: 0.7rem; color: var(--accent2); background: rgba(0,170,255,0.07); padding: 0.22rem 0.55rem; border-radius: 3px; display: inline-block; margin: 0.2rem 0.2rem 0.2rem 0; }
+    .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
+    section { max-width: 860px; margin: 0 auto; padding: 3rem 2.5rem; }
+    h2 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
+    p { font-size: 0.97rem; color: var(--muted); line-height: 1.9; font-weight: 300; margin-bottom: 1rem; }
+    .hero-img { width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block; margin-bottom: 3rem; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 2rem 0; }
+    .stat-box { background: var(--bg2); padding: 1.5rem; }
+    .stat-num { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+    .stat-lbl { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+    .highlight-box { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .highlight-box p { margin: 0; font-size: 0.92rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .detail-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+    .detail-card h3 { font-size: 0.8rem; font-family: var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
+    .detail-card ul { list-style: none; }
+    .detail-card li { font-size: 0.86rem; color: var(--muted); padding: 0.5rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.6rem; font-weight: 300; }
+    .detail-card li:last-child { border-bottom: none; }
+    .detail-card li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .cta-bar { background: var(--bg2); border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .cta-text { font-size: 0.9rem; color: var(--muted); }
+    .cta-text strong { color: var(--text); font-weight: 500; }
+    .btn-accent { background: var(--accent); color: #000; padding: 0.65rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600; font-family: var(--mono); transition: opacity 0.2s; }
+    .btn-accent:hover { opacity: 0.82; }
+    footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 650px) { .two-col { grid-template-columns: 1fr; } nav { padding: 1rem 1.25rem; } .hero, section { padding-left: 1.25rem; padding-right: 1.25rem; } .divider { margin: 0 1.25rem; } .cta-bar { padding: 1.5rem 1.25rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">surya.ramessh</a>
+  <a href="index.html#projects" class="back">← back to projects</a>
+</nav>
+
+<div class="hero">
+  <div class="section-label">HR analytics · Robertson Cooper</div>
+  <h1>Wellbeing Benchmarking &amp; Predictive Modelling</h1>
+  <div class="hero-meta">
+    <div class="meta-item"><span>role</span>Data Scientist</div>
+    <div class="meta-item"><span>client type</span>Organisational Wellbeing Consultancy</div>
+    <div class="meta-item"><span>duration</span>Oct 2025 – Present</div>
+    <div class="meta-item"><span>status</span>Ongoing</div>
+  </div>
+  <div>
+    <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span>
+    <span class="tag">Git CI/CD</span><span class="tag">Benchmarking</span><span class="tag">Predictive Modelling</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section>
+  <img src="assets/wellbeing-dashboard.png" alt="Wellbeing Benchmark Dashboard" class="hero-img">
+
+  <h2>The problem</h2>
+  <p>Organisations spend significant budget on employee wellbeing programmes without clear evidence of where the real risks lie, which demographic groups are most affected, or whether interventions are working. Survey data sits in spreadsheets, leadership gets anecdotal reports, and decisions are made on gut feel rather than evidence.</p>
+  <p>Robertson Cooper needed an analytical system that could turn large-scale survey data into defensible, actionable insight — something a leadership team could present to a board and a people team could use week to week.</p>
+
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num">56k+</div><div class="stat-lbl">survey responses in benchmark dataset</div></div>
+    <div class="stat-box"><div class="stat-num">12</div><div class="stat-lbl">validated wellbeing &amp; engagement metrics</div></div>
+    <div class="stat-box"><div class="stat-num">~75%</div><div class="stat-lbl">variance explained in key outcomes</div></div>
+    <div class="stat-box"><div class="stat-num">12</div><div class="stat-lbl">demographic strata tracked</div></div>
+  </div>
+
+  <h2>What I did</h2>
+  <p>I built an end-to-end benchmarking and predictive analytics pipeline that integrated 12 validated wellbeing, engagement, and performance metrics. The framework enabled comparison of any client organisation against a General Working Population benchmark drawn from 56,000+ survey responses.</p>
+
+  <div class="highlight-box">
+    <p>The predictive driver models identified which specific wellbeing factors — stress, autonomy, line manager quality, workload — were most strongly linked to productivity loss, presenteeism, and attrition risk in each organisation. Leadership could finally see not just that wellbeing scores were low, but <em>why</em>, and where to act first.</p>
+  </div>
+
+  <p>The pipeline was built with Git-versioned CI workflows, making results reproducible and auditable — important when clients need to track change over time or present findings to regulators and investors.</p>
+
+  <div class="two-col">
+    <div class="detail-card">
+      <h3>Technical approach</h3>
+      <ul>
+        <li>Multi-metric integration across 12 validated survey instruments</li>
+        <li>Demographic stratification across 12 population segments</li>
+        <li>Driver modelling using regression &amp; feature importance analysis</li>
+        <li>Git CI/CD pipeline for reproducible, versioned reporting</li>
+        <li>Risk hotspot identification at team and department level</li>
+      </ul>
+    </div>
+    <div class="detail-card">
+      <h3>Business outcomes</h3>
+      <ul>
+        <li>Enabled benchmark comparison vs 56,000+ employee General Working Population</li>
+        <li>Predictive models explained ~75% of variance in productivity &amp; attrition</li>
+        <li>Leadership teams received board-ready dashboards with clear risk priorities</li>
+        <li>Reproducible pipeline reduced reporting time on repeat engagements</li>
+        <li>Identified demographic groups most at risk before symptoms escalated</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Why this matters for your organisation</h2>
+  <p>If you run employee surveys and struggle to translate them into decisions, this is exactly the kind of work I do. Whether you need a one-off benchmarking report or an ongoing analytical layer on top of your existing data, the methodology is the same: clean data, validated metrics, models that explain rather than just describe.</p>
+  <p>This type of analysis is particularly valuable for HR teams preparing for board reviews, organisations going through significant change, and people analytics functions that need to move beyond headcount and eNPS scores.</p>
+</section>
+
+<div class="cta-bar">
+  <div class="cta-text"><strong>Interested in similar work?</strong> I'm available for HR analytics and benchmarking engagements.</div>
+  <a href="index.html#contact" class="btn-accent">→ get in touch</a>
+</div>
+
+<footer>
+  <span>Surya Naraynan Ramessh</span>
+  <a href="index.html#projects" style="color:var(--muted);text-decoration:none;">← all projects</a>
+</footer>
+
+</body>
+</html>

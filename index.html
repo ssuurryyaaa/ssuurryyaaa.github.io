@@ -92,7 +92,23 @@
     .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag { font-family: var(--mono); font-size: 0.7rem; color: var(--accent2); background: rgba(0,170,255,0.07); padding: 0.22rem 0.55rem; border-radius: 3px; }
 
-    /* SKILLS */
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .svc-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem; transition: border-color 0.2s; display: flex; flex-direction: column; }
+    .svc-card:hover { border-color: var(--accent); }
+    .svc-card.featured { border-color: var(--accent); }
+    .svc-badge { font-family: var(--mono); font-size: 0.68rem; color: #000; background: var(--accent); padding: 0.2rem 0.6rem; border-radius: 3px; display: inline-block; margin-bottom: 1.25rem; letter-spacing: 0.04em; }
+    .svc-badge.subtle { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .svc-title { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .svc-price { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 1rem; }
+    .svc-desc { font-size: 0.86rem; color: var(--muted); line-height: 1.75; font-weight: 300; flex: 1; margin-bottom: 1.5rem; }
+    .svc-list { list-style: none; margin-bottom: 1.5rem; }
+    .svc-list li { font-size: 0.82rem; color: var(--muted); padding: 0.4rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 0.5rem; }
+    .svc-list li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+    .svc-cta { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 0.55rem 1rem; border-radius: 4px; text-align: center; transition: background 0.2s, color 0.2s; }
+    .svc-cta:hover { background: var(--accent); color: #000; }
+
+
     .skills-bg { background: var(--bg2); }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; }
     .skill-group h3 { font-size: 0.75rem; color: var(--accent); font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
@@ -130,6 +146,7 @@
   <div class="logo">surya.ramessh</div>
   <ul class="nav-links">
     <li><a href="#about">about</a></li>
+    <li><a href="#services">services</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#skills">skills</a></li>
     <li><a href="#contact">contact</a></li>
@@ -138,28 +155,29 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">open to collaborations</div>
-  <h1>Data Scientist.<br>Turning <span>messy data</span><br>into clear decisions.</h1>
+  <div class="hero-tag">open for collaboration</div>
+  <h1>Your data is sitting<br>there. Let's make it<br><span>do something.</span></h1>
   <p class="hero-desc">
-    I help organisations solve complex analytical problems — from benchmarking and driver modelling to structured evaluation frameworks that stand up to regulatory scrutiny.
+    I help HR teams, policy bodies, and tech organisations turn raw data into decisions leadership can act on — delivered in weeks, not quarters. Regulatory-grade rigour, without the consultancy price tag.
   </p>
   <div class="hero-btns">
-    <a href="#projects" class="btn-primary">View projects</a>
-    <a href="Surya_CV.pdf" class="btn-ghost">Download CV</a>
+    <a href="#services" class="btn-primary">See how I can help</a>
+    <a href="#projects" class="btn-ghost">View past work</a>
   </div>
   <div class="pills">
-    <span class="pill-item">large-scale data modelling</span>
-    <span class="pill-item">benchmarking &amp; variance analysis</span>
+    <span class="pill-item">benchmarking &amp; driver modelling</span>
     <span class="pill-item">regulatory evaluation design</span>
-    <span class="pill-item">applied AI risk analytics</span>
+    <span class="pill-item">AI risk analytics</span>
+    <span class="pill-item">predictive systems</span>
   </div>
-  <div class="hero-code">analyst = {
-  name: "Surya Ramessh",
-  stack: ["Python","SQL","AWS"],
-  domains: ["wellbeing",
-            "age assurance",
-            "deepfakes",
-            "HCI"],
+  <div class="hero-code">engagement = {
+  client: "your organisation",
+  result: "decisions you can defend",
+  timeline: "2–6 weeks",
+  domains: ["HR analytics",
+            "AI policy",
+            "biometrics",
+            "evaluation"],
   available: True
 }</div>
 </div>
@@ -202,9 +220,10 @@
         <img src="assets/wellbeing-dashboard.png" alt="Wellbeing Benchmark Dashboard" class="proj-img">
         <div class="proj-body">
           <div class="proj-top">
-            <div class="proj-title">Wellbeing Benchmarking &amp; Predictive Modelling</div>
+            <div class="proj-title">Wellbeing Benchmarking — Robertson Cooper</div>
+            <a href="project-wellbeing.html" target="_blank" class="proj-link">↗ read more</a>
           </div>
-          <div class="proj-desc">Integrated 12 validated wellbeing metrics across a 56,000+ survey dataset to identify risk hotspots and build predictive driver models explaining ~75% variance in key organisational outcomes.</div>
+          <div class="proj-desc">A people team needed to know which employee groups were at risk — and why. I built a benchmarking pipeline across 56,000+ survey responses, then developed predictive models that explained ~75% of variance in productivity and attrition. Leadership finally had numbers they could act on.</div>
           <div class="proj-tags">
             <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Git CI/CD</span><span class="tag">Benchmarking</span>
           </div>
@@ -216,11 +235,11 @@
         <div class="proj-body">
           <div class="proj-top">
             <div class="proj-title">Australian Age Assurance Technology Trial</div>
-            <a href="https://www.infrastructure.gov.au/media-centre/publications/age-assurance-technology-trial" target="_blank" class="proj-link">↗ report</a>
+            <a href="project-aatt.html" target="_blank" class="proj-link">↗ read more</a>
           </div>
-          <div class="proj-desc">Led evaluation of 52 biometric age-assurance vendors for Australia's Social Media Minimum Age law. Designed a 2,500-participant sampling framework across 12 demographic strata, improving age-estimation accuracy by ~20%.</div>
+          <div class="proj-desc">The Australian Government needed a defensible, statistically robust framework to evaluate 52 biometric vendors for Social Media age-restriction law. I designed the sampling methodology, built the CV pipeline, and co-authored the 88-page public evaluation proposal — improving vendor accuracy by ~20% relative to baseline.</div>
           <div class="proj-tags">
-            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">OpenCV</span><span class="tag">AWS</span><span class="tag">Biometrics</span>
+            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">OpenCV</span><span class="tag">AWS</span><span class="tag">Policy</span>
           </div>
         </div>
       </div>
@@ -229,10 +248,10 @@
         <img src="assets/deepfake-detection-workshop.jpeg" alt="Deepfake Detection Research" class="proj-img">
         <div class="proj-body">
           <div class="proj-top">
-            <div class="proj-title">Deepfake Detection Research</div>
-            <span class="tag" style="align-self:center">UKRI</span>
+            <div class="proj-title">Deepfake Detection — UKRI Research</div>
+            <a href="project-deepfake.html" target="_blank" class="proj-link">↗ read more</a>
           </div>
-          <div class="proj-desc">UKRI-backed research with scalable PySpark data architecture across AWS. Managed GDPR-compliant handling of 200,000+ facial records across UK and Swiss jurisdictions. Delivered three workshops to 150+ professionals.</div>
+          <div class="proj-desc">Organisations handling sensitive biometric data needed to understand their real exposure to AI-generated attacks. I built the data architecture, managed GDPR-compliant pipelines across two jurisdictions, and translated findings into practical risk mitigation — presenting to 150+ professionals across three workshops.</div>
           <div class="proj-tags">
             <span class="tag">PySpark</span><span class="tag">AWS S3</span><span class="tag">GDPR</span><span class="tag">TensorFlow</span>
           </div>
@@ -243,16 +262,70 @@
         <img src="assets/interaction-patterns.jpeg" alt="MSc Dissertation" class="proj-img">
         <div class="proj-body">
           <div class="proj-top">
-            <div class="proj-title">MSc Dissertation – Predicting Dashboard Usability</div>
+            <div class="proj-title">Predicting Dashboard Usability — MSc Research</div>
+            <a href="project-dissertation.html" target="_blank" class="proj-link">↗ read more</a>
           </div>
-          <div class="proj-desc">Designed controlled A/B experiments on 1.2M+ JSON interaction logs. Built an SVR model to predict engagement patterns, reducing UX friction by ~62% and producing a reproducible usability evaluation framework.</div>
+          <div class="proj-desc">Dashboard teams were guessing at what made interfaces work. I ran controlled A/B experiments across 1.2M+ interaction logs and built a model to predict engagement quality before deployment — cutting UX friction by ~62% and giving teams a repeatable evaluation method.</div>
           <div class="proj-tags">
-            <span class="tag">SVR</span><span class="tag">A/B Testing</span><span class="tag">Pandas</span><span class="tag">HCI</span>
+            <span class="tag">SVR</span><span class="tag">A/B Testing</span><span class="tag">Pandas</span><span class="tag">UX Research</span>
           </div>
         </div>
       </div>
 
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="inner">
+    <div class="section-label">work with me</div>
+    <h2>What I can help with.</h2>
+    <div class="services-grid">
+
+      <div class="svc-card">
+        <span class="svc-badge subtle">explore</span>
+        <div class="svc-title">Data Exploration &amp; Cleaning</div>
+        <div class="svc-desc">Got a dataset but not sure what to do with it? I'll dig in, clean it up, and surface the patterns worth investigating — so you know where to focus before spending more time or money.</div>
+        <ul class="svc-list">
+          <li>Data quality assessment</li>
+          <li>Exploratory analysis &amp; visualisation</li>
+          <li>Plain-English summary of findings</li>
+          <li>Recommendations for next steps</li>
+        </ul>
+        <a href="#contact" class="svc-cta">→ get in touch</a>
+      </div>
+
+      <div class="svc-card featured">
+        <span class="svc-badge">good starting point</span>
+        <div class="svc-title">Analysis &amp; Reporting</div>
+        <div class="svc-desc">Turn your existing data into a clear, structured report your team can actually use. Useful for survey results, performance data, or anything sitting in a spreadsheet waiting to mean something.</div>
+        <ul class="svc-list">
+          <li>Structured analysis tailored to your question</li>
+          <li>Charts and visualisations included</li>
+          <li>Written report with key takeaways</li>
+          <li>One round of revisions</li>
+        </ul>
+        <a href="#contact" class="svc-cta">→ get in touch</a>
+      </div>
+
+      <div class="svc-card">
+        <span class="svc-badge subtle">build</span>
+        <div class="svc-title">Dashboard &amp; Pipeline Setup</div>
+        <div class="svc-desc">Need something repeatable — a dashboard your team checks weekly, or a pipeline that keeps reporting up to date automatically? I'll build it, document it, and hand it over ready to use.</div>
+        <ul class="svc-list">
+          <li>Power BI or Tableau dashboard</li>
+          <li>Automated data pipeline (Python / SQL)</li>
+          <li>Documentation &amp; handover</li>
+          <li>Short-term support after delivery</li>
+        </ul>
+        <a href="#contact" class="svc-cta">→ get in touch</a>
+      </div>
+
+    </div>
+    <p style="margin-top:2rem;font-size:0.82rem;color:var(--muted);text-align:center;">Not sure which fits? <a href="#contact" style="color:var(--accent);text-decoration:none;">Send a message</a> — I'll help figure out what makes sense.</p>
   </div>
 </section>
 
@@ -300,7 +373,7 @@
   <div class="contact-inner">
     <div class="section-label">contact</div>
     <h2>Let's work together.</h2>
-    <p class="contact-desc">Open to independent analytical and advisory collaborations. Whether it's improving reporting clarity, building predictive systems, or designing defensible measurement approaches — get in touch.</p>
+    <p class="contact-desc">Have a project in mind, or not sure where to start? Send me a quick message with what you're working on — I'll come back within 24 hours.</p>
     <div class="contact-links">
       <a href="mailto:suryanaraynanr1@gmail.com" class="contact-link">✉ Email</a>
       <a href="https://github.com/suryanaraynan" target="_blank" class="contact-link">⌥ GitHub</a>
